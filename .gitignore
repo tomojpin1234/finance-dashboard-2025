@@ -1,0 +1,30 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+.env
+*.parquet
+*.ipynb_checkpoints/
+
+# Others
+.vscode/
+.DS_Store
+
+# Airflow
+airflow/logs/
+airflow/__pycache__/
+airflow/airflow.db
+airflow/.env
+
+# dbt
+finance_dashboard_dbt/target/
+finance_dashboard_dbt/dbt_modules/
+finance_dashboard_dbt/logs/
+finance_dashboard_dbt/.dbt/.user.yml
+
+# Logs
+logs/
+
+# Terraform
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
