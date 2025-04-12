@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: fct_econ_summary
+    description: |
+      Final economic summary table enriched with GDP, CPI, unemployment, interest rates,
+      and stock market data aggregated by year and country.
+    columns:
+      - name: country
+        description: ISO country code
+        tests:
+          - not_null
+
+      - name: year
+        description: Year of the data
+
+      - name: gdp_usd
+        description: GDP in current US dollars
+
+      - name: prev_gdp
+        description: GDP of the previous year
+
+      - name: gdp_growth_pct
+        description: GDP growth calculated as the % change from the previous year
+
+      - name: cpi_percent
+        description: Inflation measured by CPI (Consumer Price Index)
+
+      - name: unemployment_pct
+        description: Unemployment rate (percentage of total labor force)
+
+      - name: interest_rate
+        description: Interest rate, e.g., 10-year bond yield or central bank rate
+
+      - name: avg_index_change_pct
+        description: Average percentage change in the stock market index over the year
+
+      - name: index_close
+        description: Average closing price of the index for the year
+
+      - name: year_date
+        description: Date column derived from year to support filtering in dashboards

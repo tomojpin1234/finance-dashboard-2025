@@ -1,0 +1,9 @@
+tqdm
+pandas
+pyarrow
+google-cloud-storage
+google-cloud-bigquery
+pyspark>=3.5.0
+dbt-bigquery>=1.6.0
+yfinance
+dbt-bigquery==1.9.1

@@ -1,0 +1,39 @@
+[project]
+name = "financedashboard2025"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "PS"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "dbt-core (>=1.9.3,<2.0.0)",
+    "dbt-bigquery (>=1.9.1,<2.0.0)",
+    "google-cloud-bigquery (>=3.30.0,<4.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)",
+    "pyspark (>=3.5.5,<4.0.0)",
+    "notebook (>=7.3.3,<8.0.0)",
+    "ipykernel (>=6.29.5,<7.0.0)",
+    "pyarrow (>=19.0.1,<20.0.0)",
+    "matplotlib (>=3.10.1,<4.0.0)",
+    "yfinance (>=0.2.55,<0.3.0)",
+    "seaborn (>=0.13.2,<0.14.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.5"
+
+[tool.poetry.group.dev.dependencies]
+apache-airflow = {version = "2.10.5", extras = ["google"], optional = true}
+
+[tool.poetry.group.format.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+

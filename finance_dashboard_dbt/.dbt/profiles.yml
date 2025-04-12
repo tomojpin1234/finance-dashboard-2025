@@ -1,0 +1,11 @@
+finance_dashboard_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account      
+      threads: 2      
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      dataset: "{{ env_var('BQ_DATASET') }}"
+      location: "{{ env_var('REGION') }}"
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"

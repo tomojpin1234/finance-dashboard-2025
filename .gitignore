@@ -4,6 +4,7 @@ __pycache__/
 .env
 *.parquet
 *.ipynb_checkpoints/
+notebooks/charts
 
 # Others
 .vscode/
@@ -28,3 +29,10 @@ logs/
 terraform/.terraform/
 terraform/terraform.tfstate
 terraform/terraform.tfstate.backup
+terraform/terraform.tfstate
+terraform/terraform.tfstate.*
+terraform/.terraform/
+terraform/crash.log
+
+# GCP credentials
+credentials/*.json

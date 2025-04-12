@@ -1,0 +1,10 @@
+models:
+  - name: normalized_market_indices
+    description: Normalized index close prices over time, with percentage change from the start date
+    columns:
+      - name: country
+        description: Country ISO code
+      - name: date
+      - name: close
+      - name: start_close
+      - name: pct_from_start

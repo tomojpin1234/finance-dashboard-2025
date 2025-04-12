@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: finance_dashboard
+    database: finance-dashboard-2025
+    schema: finance_dashboard
+    tables:
+      - name: macro_data
+        description: "Raw macroeconomic data ingested from World Bank API"
+      - name: market_indices
+        description: "Raw stock market index data fetched from yfinance"
+
+models:
+  - name: stg_macro_data
+    description: "Staging model that pivots macroeconomic indicators into GDP and CPI per country per year."
+    columns:
+      - name: country
+        description: "ISO country code"
+        tests:
+          - not_null
+      - name: year
+        description: "Calendar year"
+        tests:
+          - not_null
+      - name: gdp_usd
+        description: "Gross Domestic Product in current US dollars"
+      - name: cpi_percent
+        description: "Consumer Price Index percentage (annual inflation)"
+
+  - name: stg_market_indices
+    description: "Staging model that prepares market index time series with percent change per country and date."
+    columns:
+      - name: country
+        description: "ISO country code"
+        tests:
+          - not_null
+      - name: date
+        description: "Market date"
+        tests:
+          - not_null
+      - name: close
+        description: "Closing index value on a given date"
+      - name: prev_close
+        description: "Previous day's close value"
+      - name: pct_change
+        description: "Daily percentage change in index value"

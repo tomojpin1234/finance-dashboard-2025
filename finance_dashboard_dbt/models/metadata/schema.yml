@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: last_updated
+    description: "Timestamp indicating when the pipeline last ran"
+    columns:
+      - name: last_updated
+        description: "UTC timestamp"
