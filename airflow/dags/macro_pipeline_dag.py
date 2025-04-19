@@ -30,9 +30,14 @@ RAW_DATA_DIR = "/opt/airflow/data/raw"
 PROJECT_ID = os.getenv("GCP_PROJECT_ID")
 BQ_DATASET = os.getenv("BQ_DATASET")
 GCP_KEY_PATH = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+LOCATION = os.getenv("REGION", "us-central1")
 
 # Default args
-default_args = {"owner": "airflow", "retries": 1, "retry_delay": timedelta(minutes=5)}
+default_args = {
+    "owner": "airflow",
+    "retries": 1,
+    "retry_delay": timedelta(minutes=5),
+}
 
 
 def upload_all_parquet_to_gcs():
@@ -47,10 +52,10 @@ with DAG(
     dag_id="macro_data_ingestion",
     default_args=default_args,
     description="Fetch macroeconomic + market data and store as Parquet",
-    schedule_interval="@monthly",  # or change to "@once" while testing
-    start_date=datetime(2023, 1, 1),
+    schedule_interval=None,  # or change to "@once" while testing
     catchup=False,
     tags=["macro", "finance"],
+    is_paused_upon_creation=False,
 ) as dag:
 
     def task_fetch_macro_data():
@@ -96,6 +101,7 @@ with DAG(
             "dataset_id": BQ_DATASET,
             "table_id": "macro_data",
             "project_id": PROJECT_ID,
+            "location": LOCATION,
         },
         dag=dag,
     )
@@ -109,6 +115,7 @@ with DAG(
             "dataset_id": BQ_DATASET,
             "table_id": "market_indices",
             "project_id": PROJECT_ID,
+            "location": LOCATION,
         },
         dag=dag,
     )

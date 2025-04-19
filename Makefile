@@ -113,3 +113,51 @@ init:
 reformat:
 	poetry run isort airflow/dags/macro_pipeline_dag.py scripts/
 	poetry run black airflow/dags/macro_pipeline_dag.py scripts/	
+
+
+# ------------------
+# 🆘 Help
+# ------------------
+
+help:
+	@echo ""
+	@echo "📘 MAKEFILE HELP"
+	@echo "=========================="
+	@echo ""
+	@echo "🧼 Notebook helpers:"
+	@echo "  start-jupyter                    Install kernel and start Jupyter environment"
+	@echo ""
+	@echo "🧪 Python Data Scripts:"
+	@echo "  script-fetch-worldbank-data     Fetch macroeconomic data from World Bank"
+	@echo "  script-fetch-market-indices     Fetch financial index data via yfinance"
+	@echo "  script-upload-to-gcs            Upload parquet files to GCS"
+	@echo "  script-load-to-bigquery-macro-data    Load macro data to BigQuery"
+	@echo "  script-load-to-bigquery-market-data   Load market index data to BigQuery"
+	@echo ""
+	@echo "🌀 Airflow Commands:"
+	@echo "  airflow-init                     Initialize Airflow"
+	@echo "  airflow-up                       Start Airflow (via Docker)"
+	@echo "  airflow-down                     Stop Airflow"
+	@echo "  airflow-restart                  Restart Airflow"
+	@echo "  airflow-rebuild                  Rebuild Airflow containers"
+	@echo "  airflow-logs                     View logs for Airflow"
+	@echo "  airflow-trigger                  Manually trigger DAG"
+	@echo ""
+	@echo "☁️ Terraform Commands:"
+	@echo "  tf-init                          Initialize Terraform"
+	@echo "  tf-plan                          Preview Terraform changes"
+	@echo "  tf-apply                         Apply infrastructure changes"
+	@echo "  tf-destroy                       Tear down infrastructure"
+	@echo "  tf-output-key                    Output GCP service account key"
+	@echo ""
+	@echo "🧱 DBT Commands:"
+	@echo "  dbt-run                          Run DBT models"
+	@echo "  dbt-run-full                     Run DBT with --full-refresh"
+	@echo "  dbt-test                         Run DBT tests"
+	@echo "  dbt-debug                        Debug DBT connection"
+	@echo ""
+	@echo "🧹 Utility:"
+	@echo "  clean                            Clean data directories"
+	@echo "  setup                            Install Poetry dependencies"
+	@echo "  init                             Create necessary folders"
+	@echo "  reformat                         Autoformat code with isort and black"	
